@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap&subset=latin-ext");
+
+:root {
+    --rgba-white: rgba(255, 255, 255, 1);
+    --rgba-black: rgba(0, 0, 0, 1);
+    --rgba-transparent: rgba(0, 0, 0, 0);
+    --x: none;
+}
+
+@media (min-width: 0px) {
+  :root {
+    --x: none;
+  }
+}
+
+.display-none {
+  display: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+    font-family: "Roboto", sans-serif;
+    color: var(--rgba-white);
+    background-color: var(--rgba-black);
+    font-size: 10px;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+#babylonSection {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+#guiCanvas {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0);
+  z-index: 10;
+  pointer-events: none;
+  cursor: default;
+}
+
+.buttonsWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 185px;
+  height: 100px;
+  background-color: #333333;
+  z-index: 11;
+  pointer-events: all !important;
+  cursor: default;
+}
+
+#buttonLeft {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 70px;
+  height: 70px;
+  background-color: rgb(69, 112, 28);
+  cursor: pointer;
+}
+
+#buttonRight {
+  position: absolute;
+  top: 15px;
+  left: 100px;
+  width: 70px;
+  height: 70px;
+  background-color: rgb(28, 74, 112);
+  cursor: pointer;
+}
+
+#renderCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  outline: 0px solid var(--rgba-transparent);
+  outline-offset: 0px;
+}

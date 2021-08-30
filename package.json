@@ -1,0 +1,28 @@
+{
+  "name": "babylonjs-template",
+  "version": "1.0.0",
+  "description": "Our 1st Babylon app",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack serve --https --cert ./keys/private.pem --key ./keys/private.key --host localhost --port 8080 --config ./webpack.config.js --open --mode development"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "html-webpack-plugin": "^5.2.0",
+    "webpack": "^5.24.2",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-livereload-plugin": "^3.0.0"
+  },
+  "dependencies": {
+    "@babylonjs/materials": "^4.2.0",
+    "babylonjs": "^4.2.0",
+    "babylonjs-gui": "^4.2.0",
+    "babylonjs-loaders": "^4.2.0",
+    "babylonjs-materials": "^4.2.0",
+    "cannon": "^0.6.2",
+    "dat.gui": "^0.7.7",
+    "path": "^0.12.7",
+    "terser": "^4.8.0"
+  }
+}
