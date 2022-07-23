@@ -8,4 +8,6 @@ This is a model of solar system in more or less realistic scale except for the s
 - npm install
 - npm run dev
 
+![img1](img1.png)
+![img2](img2.png)
 
