@@ -6,22 +6,14 @@ import {
     XREnviromnent
 } from './XREnviromnent.js';
 
-//import * as CANNON from "cannon";
-
-
-
-
 
 //SIZES
-const earthSize = 10 //jedyny współczynnik który powinien być zmieniany
+const earthSize = 10 //change only this parameter in order to change relative planet sizes and distances between planets
 
 
 
 
-
-
-
-const sunSize = 10 * earthSize //ponad 100x
+const sunSize = 10 * earthSize 
 const mercurySize = 0.38 * earthSize
 const venusSize = 0.95 * earthSize
 const moonSize = 0.27 * earthSize
@@ -32,12 +24,12 @@ const jupiterSize = 8 * earthSize //10,97
 const saturnSize = 7 * earthSize //9,14
 
 //distance from Sun
-const earthDist = earthSize / 0.04 //1175.43 wspł rzeczywisty 0,01
+const earthDist = earthSize / 0.04 //1175.4
 const mercuryDist = 0.39 * earthDist //455.01
 const venusDist = 0.72 * earthDist //850.14
 const marsDist = 1.52 * earthDist //1790.64
-const jupiterDist = 2.7 * earthDist //6116.79 dystans rzeczywisty 5,2
-const saturnDist = 3.5 * earthDist //10500 dystans rzeczywisty 9,36
+const jupiterDist = 2.7 * earthDist //6116.79 
+const saturnDist = 3.5 * earthDist //10500 
 
 class Scene {
 
@@ -59,14 +51,23 @@ class Scene {
         this.alphaJupiter = 0.9
         this.alphaSaturn = -0.5
 
-        // this.scene.enablePhysics(null, new BABYLON.CannonJSPlugin())
     }
 
     sceneBackgrund() {
+        
+        // Section responsible for rendering milky way
         let stars = new Stars(this.scene, 50e2, .38, -1.62, 1000, false, true, true) //scene, starLimnit, starScale 0.71, radius, twinkleStars, showMilkyWay
         stars.loadAssets();
+        
+        
+        
+        
         this.scene.clearColor = new BABYLON.Color3.Black()
 
+        
+        
+        // Section responsible for rendering alternative stars background (sky box) you can also which paths to ./textures/skybox_neb/... for an alterinative green look
+        
         /*const skybox = BABYLON.MeshBuilder.CreateBox("skyBox", {
             size: 10000.0
         }, this.scene);
@@ -96,7 +97,7 @@ class Scene {
 
 
 
-
+        // Uncomment following section if you want to see the scene in VR:
         /*
                 let xrEnviromnent = new XREnviromnent(
                     this.scene, ground
@@ -105,20 +106,8 @@ class Scene {
             */
     }
 
-
-
-    /*
-        createShadows() {
-            let shadowGenerator = new BABYLON.ShadowGenerator(1024, light2);
-            // shadowGenerator.usePercentageCloserFiltering = true;
-            // shadowGenerator.blurKernel = 4;
-            shadowGenerator.setDarkness(0);
-            shadowGenerator.useBlurExponentialShadowMap = true;
-            shadowGenerator.blurScale = 2;
-            // shadowGenerator.bias = 0.001;
-            // shadowGenerator.normalBias = 0.005;
-        }
-    */
+  
+    
     flyCamera() {
         const camera = new BABYLON.FlyCamera("FlyCamera", new BABYLON.Vector3(0, 5, -10), this.scene)
         camera.rollCorrect = 10
@@ -132,9 +121,6 @@ class Scene {
         this.sun.material = new BABYLON.StandardMaterial("sunmat", this.scene)
         this.sun.material.emissiveTexture = new BABYLON.Texture("./textures/sun.jpg")
         this.sun.position = new BABYLON.Vector3(0, 0, 0)
-        //this.sun.physicsImpostor = new BABYLON.PhysicsImpostor(this.sun, BABYLON.PhysicsImpostor.SphereImpostor, {
-        //    mass: 10
-        //}, this.scene)
     }
 
     createMercury() {
@@ -142,45 +128,34 @@ class Scene {
         this.mercury.material = new BABYLON.StandardMaterial("mercmat", this.scene)
         this.mercury.material.ambientTexture = new BABYLON.Texture("./textures/mercury.jpg")
 
-        //this.earth.physicsImpostor = new BABYLON.PhysicsImpostor(this.earth, BABYLON.PhysicsImpostor.SphereImpostor, {
-        //     mass: 1
-        //   }, this.scene)
     }
 
     createVenus() {
         this.venus = BABYLON.Mesh.CreateSphere("venus", 32, venusSize, this.scene, false)
         this.venus.material = new BABYLON.StandardMaterial("venusmat", this.scene)
         this.venus.material.ambientTexture = new BABYLON.Texture("./textures/venus.jpg")
-        //this.earth.physicsImpostor = new BABYLON.PhysicsImpostor(this.earth, BABYLON.PhysicsImpostor.SphereImpostor, {
-        //     mass: 1
-        //   }, this.scene)
+
     }
 
     createEarth() {
         this.earth = BABYLON.Mesh.CreateSphere("earth", 32, earthSize, this.scene, false)
         this.earth.material = new BABYLON.StandardMaterial("earthmat", this.scene)
         this.earth.material.ambientTexture = new BABYLON.Texture("./textures/earth.jpg")
-        //this.earth.physicsImpostor = new BABYLON.PhysicsImpostor(this.earth, BABYLON.PhysicsImpostor.SphereImpostor, {
-        //     mass: 1
-        //   }, this.scene)
+
     }
 
     createMoon() {
         this.moon = BABYLON.Mesh.CreateSphere("moon", 32, moonSize, this.scene, false)
         this.moon.material = new BABYLON.StandardMaterial("moonmat", this.scene)
         this.moon.material.ambientTexture = new BABYLON.Texture("./textures/moon.jpg")
-        //this.moon.physicsImpostor = new BABYLON.PhysicsImpostor(this.moon, BABYLON.PhysicsImpostor.SphereImpostor, {
-        //    mass: 0.5
-        //}, this.scene)
+
     }
 
     createMars() {
         this.mars = BABYLON.Mesh.CreateSphere("mars", 32, marsSize, this.scene, false)
         this.mars.material = new BABYLON.StandardMaterial("marsmat", this.scene)
         this.mars.material.ambientTexture = new BABYLON.Texture("./textures/mars.jpg")
-        //this.earth.physicsImpostor = new BABYLON.PhysicsImpostor(this.earth, BABYLON.PhysicsImpostor.SphereImpostor, {
-        //     mass: 1
-        //   }, this.scene)
+
     }
 
 
@@ -197,18 +172,14 @@ class Scene {
         this.deimos = BABYLON.Mesh.CreateSphere("deimos", 32, deimosSize, this.scene, false)
         this.deimos.material = new BABYLON.StandardMaterial("deimosmat", this.scene)
         this.deimos.material.ambientTexture = new BABYLON.Texture("./textures/deimos.jpg")
-        //this.earth.physicsImpostor = new BABYLON.PhysicsImpostor(this.earth, BABYLON.PhysicsImpostor.SphereImpostor, {
-        //     mass: 1
-        //   }, this.scene)
+
     }
 
     createJupiter() {
         this.jupiter = BABYLON.Mesh.CreateSphere("jupiter", 32, jupiterSize, this.scene, false)
         this.jupiter.material = new BABYLON.StandardMaterial("jupitermat", this.scene)
         this.jupiter.material.ambientTexture = new BABYLON.Texture("./textures/jupiter.jpg")
-        //this.earth.physicsImpostor = new BABYLON.PhysicsImpostor(this.earth, BABYLON.PhysicsImpostor.SphereImpostor, {
-        //     mass: 1
-        //   }, this.scene)
+
     }
 
     createSaturn() {
