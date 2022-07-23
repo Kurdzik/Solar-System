@@ -163,9 +163,7 @@ class Scene {
         this.phobos = BABYLON.Mesh.CreateSphere("phobos", 32, phobosSize, this.scene, false)
         this.phobos.material = new BABYLON.StandardMaterial("phobosmat", this.scene)
         this.phobos.material.ambientTexture = new BABYLON.Texture("./textures/phobos.jpg")
-        //this.earth.physicsImpostor = new BABYLON.PhysicsImpostor(this.earth, BABYLON.PhysicsImpostor.SphereImpostor, {
-        //     mass: 1
-        //   }, this.scene)
+
     }
 
     createDeimos() {
@@ -198,7 +196,7 @@ class Scene {
         this.light.diffuse = new BABYLON.Color3(1, 1, 1)
     }
 
-    planetMovement() { //odległości i okresy obiegów można ustawić też na zasadzie proporcji
+    planetMovement() { 
         this.mercury.position = new BABYLON.Vector3(mercuryDist * Math.sin(this.alphaMercury), this.sun.position.y - 10, mercuryDist * Math.cos(this.alphaMercury));
         this.venus.position = new BABYLON.Vector3((venusDist * Math.sin(this.alphaVenus)), this.sun.position.y + 70, (venusDist * Math.cos(this.alphaVenus)))
         this.earth.position = new BABYLON.Vector3((earthDist * Math.sin(this.alphaEarth)), this.sun.position.y, (earthDist * Math.cos(this.alphaEarth)));
@@ -252,7 +250,6 @@ window.onload = function () {
     const scene = new Scene('renderCanvas');
     scene.sceneBackgrund()
     scene.flyCamera()
-
     scene.createEarth()
     scene.createSun()
     scene.createMoon()
@@ -263,7 +260,6 @@ window.onload = function () {
     scene.createDeimos()
     scene.createJupiter()
     scene.createSaturn()
-
     scene.pointLight()
     scene.doRender();
 };
