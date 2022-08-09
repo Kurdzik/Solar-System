@@ -2,7 +2,7 @@
 
 This is a model of solar system in more or less realistic scale except for the size of the sun (it should be 10 times bigger than it is)
 
-#Deployment
+# Deployment
 - App is currently deployed [here](http://srv12.mikr.us:20341/)
 
 
